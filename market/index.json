@@ -1,0 +1,124 @@
+{
+  "format": 1,
+  "title": {
+    "en": "Wizard_Aox DSH plugins",
+    "zh": "术的 DSH 插件"
+  },
+  "description": {
+    "en": "Bundles for DeepSeek Harness by Wizard_Aox.",
+    "zh": "Wizard_Aox 为 DeepSeek Harness 制作的插件。"
+  },
+  "metadata": {
+    "categories": {
+      "tuning": {
+        "title": {
+          "en": "Tuning",
+          "zh": "调优"
+        }
+      }
+    },
+    "labels": {
+      "tools": {
+        "title": {
+          "en": "Tools",
+          "zh": "工具"
+        }
+      },
+      "skills": {
+        "title": {
+          "en": "Skills",
+          "zh": "技能"
+        }
+      },
+      "web-ui": {
+        "title": {
+          "en": "Web UI",
+          "zh": "网页界面"
+        }
+      }
+    },
+    "sortKeys": {}
+  },
+  "plugins": [
+    {
+      "name": "dsh-preset-tuning",
+      "title": {
+        "en": "Preset Tuning",
+        "zh": "注入筛选"
+      },
+      "description": {
+        "en": "Filter tools and hide skills per agent preset. Hidden tool schemas leave the context entirely; hidden skills shadow out of the catalog while the plugin that provides them keeps running. Rules are applied through a Host service, so a change reaches a running session without a restart.",
+        "zh": "按 agent preset 过滤工具、隐藏技能。被隐藏的工具 schema 完全退出上下文；被隐藏的技能从目录里消失，而提供它的插件照常运行。规则经 Host 服务下发，改完连当前会话都立刻生效，不需要重启。"
+      },
+      "author": "Wizard_Aox",
+      "metadata": {
+        "category": "tuning",
+        "keywords": [
+          "preset",
+          "tools",
+          "skills",
+          "filter",
+          "context",
+          "tools-restrict"
+        ],
+        "labels": [
+          "tools",
+          "skills"
+        ],
+        "sortKeys": {}
+      },
+      "versions": [
+        {
+          "version": "0.1.0",
+          "publishTimestamp": 1794096000,
+          "source": {
+            "type": "npm"
+          },
+          "engines": {
+            "dsh": "^0.2.2"
+          }
+        }
+      ]
+    },
+    {
+      "name": "dsh-tuning-ui",
+      "title": {
+        "en": "Injection Filter UI",
+        "zh": "注入筛选界面"
+      },
+      "description": {
+        "en": "The settings page for dsh-preset-tuning: pick a preset, see every tool grouped by the plugin that provides it, split MCP servers from built-in tools, hide skills per preset, and drag the groups into the order you want.",
+        "zh": "dsh-preset-tuning 的设置页面：选择 preset，按提供它的插件分组查看工具，把 MCP 服务器与内置工具分开，逐个隐藏技能，并把分组拖成你想要的顺序。"
+      },
+      "author": "Wizard_Aox",
+      "metadata": {
+        "category": "tuning",
+        "keywords": [
+          "settings",
+          "ui",
+          "preset",
+          "tools",
+          "skills"
+        ],
+        "labels": [
+          "web-ui",
+          "tools",
+          "skills"
+        ],
+        "sortKeys": {}
+      },
+      "versions": [
+        {
+          "version": "0.3.4",
+          "publishTimestamp": 1794096000,
+          "source": {
+            "type": "npm"
+          },
+          "engines": {
+            "dsh": "^0.2.2"
+          }
+        }
+      ]
+    }
+  ]
+}

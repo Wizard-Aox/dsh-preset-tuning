@@ -178,3 +178,31 @@ node tools/gen-owners.mjs [<node_modules 根>]
 
 改 Host 侧代码（`index.js` / `preset.js` / `owners-scan.js` 等）：**必须重启 DSH**，
 禁用/启用不够（ESM 模块缓存）。
+
+## 发布到插件市场
+
+`market/index.json` 是市场索引（format 1），字段与校验规则由
+`@deepseek-ai/dsh-plugin-market-index` 定义。发布顺序：
+
+```bash
+# 1. 两个包分别发到 npm
+pnpm --dir packages/preset-tuning publish
+pnpm --dir packages/tuning-ui publish
+
+# 2. 把 index.json 里的 version / publishTimestamp 改成实际值
+#    publishTimestamp 是 Unix 秒，不是毫秒
+
+# 3. 校验（用官方校验器，别靠眼看）
+#    见下方一行命令
+
+# 4. 把 index.json 放到一个 https 地址，用户在市场设置里加这个 URL
+```
+
+校验：
+
+```bash
+node --input-type=module -e "import {readFileSync} from 'node:fs'; import {parseMarketIndex} from '@deepseek-ai/dsh-plugin-market-index'; console.log(parseMarketIndex(JSON.parse(readFileSync('market/index.json','utf8')), 'https://x/index.json').plugins.length)"
+```
+
+注意：索引里两个包版本独立（`dsh-preset-tuning` 0.1.0 / `dsh-tuning-ui` 0.3.4）。
+它们必须配套使用——`dsh-tuning-ui` 依赖 `dsh-preset-tuning` 的服务与端点。
