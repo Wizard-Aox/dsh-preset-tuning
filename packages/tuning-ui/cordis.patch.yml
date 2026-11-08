@@ -1,0 +1,7 @@
+# dsh-tuning-ui 的组合包补丁：在 profile 平面插入一行。
+#
+# name 必须是【裸包名】——客户端半侧的加载依赖这一点：
+# dsh-client-modules 只把浏览器半侧挂在「说明符恰为裸包名」的 Loader 行上。
+- insert:
+    - id: tuning-ui
+      name: 'dsh-tuning-ui'

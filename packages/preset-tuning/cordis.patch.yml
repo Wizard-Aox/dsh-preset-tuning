@@ -1,0 +1,12 @@
+# Profile 平面只挂 Host 服务：规则 / 清单 / 基线 / 排序，外加 POST /api/tuning。
+#
+# preset 平面的那半侧（工具掩码 + 技能影子）不在这个 patch 里——它必须挂在
+# 具体的 agent preset 内部，由用户在自己的 preset 的 plugins 列表里单独加：
+#
+#   - id: preset-tuning
+#     name: dsh-preset-tuning/preset
+#     config: { key: <preset 名> }
+#
+- insert:
+    - id: tuning-registry
+      name: dsh-preset-tuning
